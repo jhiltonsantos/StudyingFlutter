@@ -28,9 +28,23 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  double dolar;
+  double dollar;
   double euro;
 
+  final realController = TextEditingController();
+  final dollarController = TextEditingController();
+  final euroController = TextEditingController();
+
+  void _realChanged(String text){
+
+  }
+  void _dollarChanged(String text){
+
+  }
+  void _euroChanged(String text){
+
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +75,7 @@ class _HomeState extends State<Home> {
                   textAlign: TextAlign.center,
                 ));
               } else {
-                dolar = snapshot.data["results"]["currencies"]["USD"]["buy"];
+                dollar = snapshot.data["results"]["currencies"]["USD"]["buy"];
                 euro = snapshot.data["results"]["currencies"]["EUR"]["buy"];
                 return SingleChildScrollView(
                   padding: EdgeInsets.all(20.0),
@@ -70,38 +84,11 @@ class _HomeState extends State<Home> {
                     children: <Widget>[
                       Icon(Icons.attach_money,
                           size: 150, color: Colors.amberAccent),
-                      TextFormField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: "Reais",
-                              labelStyle: TextStyle(
-                                  color: Colors.amberAccent, fontSize: 30.0),
-                              border: OutlineInputBorder(),
-                              prefixText: "R\$"),
-                          style: TextStyle(
-                              color: Colors.amberAccent, fontSize: 25.0)),
+                      builderTextField("Reais", "R\$", realController),
                       Divider(),
-                      TextFormField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: "Dolares",
-                              labelStyle: TextStyle(
-                                  color: Colors.amberAccent, fontSize: 30.0),
-                              border: OutlineInputBorder(),
-                              prefixText: "US\$"),
-                          style: TextStyle(
-                              color: Colors.amberAccent, fontSize: 25.0)),
+                      builderTextField("Dolares", "US\$", dollarController),
                       Divider(),
-                      TextFormField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: "Euros",
-                              labelStyle: TextStyle(
-                                  color: Colors.amberAccent, fontSize: 30.0),
-                              border: OutlineInputBorder(),
-                              prefixText: "\€"),
-                          style: TextStyle(
-                              color: Colors.amberAccent, fontSize: 25.0)),
+                      builderTextField("Euro", "€", euroController),
                     ],
                   ),
                 );
@@ -116,4 +103,17 @@ class _HomeState extends State<Home> {
 Future<Map> getData() async {
   http.Response response = await http.get(request_finance);
   return json.decode(response.body);
+}
+
+Widget builderTextField(
+    String text, String prefix, TextEditingController control) {
+  return TextFormField(
+      controller: control,
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
+          labelText: text,
+          labelStyle: TextStyle(color: Colors.amberAccent, fontSize: 30.0),
+          border: OutlineInputBorder(),
+          prefixText: prefix),
+      style: TextStyle(color: Colors.amberAccent, fontSize: 25.0));
 }
