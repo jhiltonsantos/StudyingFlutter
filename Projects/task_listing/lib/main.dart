@@ -4,7 +4,7 @@ import 'home.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-void main(){
+void main() {
   FlutterError.onError = (FlutterErrorDetails details) {
     FlutterError.dumpErrorToConsole(details);
     if (kReleaseMode) {
@@ -14,5 +14,7 @@ void main(){
 
   runApp(MaterialApp(
     home: Home(),
+    
+    
   ));
 }
