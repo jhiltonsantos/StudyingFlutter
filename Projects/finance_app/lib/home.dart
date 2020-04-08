@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'widgets.dart';
 import 'api.dart';
+import 'colors.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -54,10 +55,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(106, 29, 47, 20),
+      backgroundColor: darkPrimary,
       appBar: AppBar(
           title: Text("Conversor de Moedas",
-              style: TextStyle(color: Color.fromRGBO(106, 29, 47, 20))),
+              style: TextStyle(color: darkSecondary)),
           backgroundColor: Color.fromRGBO(222, 164, 80, 20),
           centerTitle: true),
       body: FutureBuilder<Map>(

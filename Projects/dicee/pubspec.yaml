@@ -1,0 +1,47 @@
+name: dicee
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+  material_design_icons_flutter: ^4.0.5045
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - images/
+
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: fonts/Raleway-Black.ttf
+        - asset: fonts/Raleway-BoldItalic.ttf
+          style: italic
+        - asset: fonts/Raleway-Light.ttf
+        - asset: fonts/Raleway-Medium.ttf
+
+    - family: CrimsonText
+      fonts:
+        - asset: fonts/CrimsonText-Regular.ttf
+
+    - family: Play
+      fonts:
+        - asset: fonts/Play-Regular.ttf
+
+    - family:  MyFlutterApp
+      fonts:
+        - asset: fonts/MyFlutterApp.ttf
