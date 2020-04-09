@@ -11,7 +11,7 @@ Future<Map> getGifs(String _search, int _offset) async {
     response = await http.get(request_trending);
   } else {
     response = await http.get(
-        "https://api.giphy.com/v1/gifs/search?api_key=JS5DZKyuEx4mE0lYyVnDHbU949YjNGP7&q=$_search&limit=30&offset=$_offset&rating=G&lang=en");
+        "https://api.giphy.com/v1/gifs/search?api_key=JS5DZKyuEx4mE0lYyVnDHbU949YjNGP7&q=$_search&limit=20&offset=$_offset&rating=G&lang=en");
   }
 
   return json.decode(response.body);
