@@ -26,7 +26,12 @@ class _HomePageState extends State<HomePage> {
   Future<Null> _refreshList() async {
     await Future.delayed(Duration(milliseconds: 500));
     setState(() {
-      _offset += 20;
+      if (_search == null || _search.isEmpty) {
+        _offset = 0;
+        getGifs(_search, _offset);
+      } else {
+        _offset += 20;
+      }
     });
     return null;
   }
@@ -35,14 +40,22 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Image.asset(
-          'images/giphy_logo.gif',
-          width: 500,
-          height: 100,
-          alignment: Alignment.centerLeft,
-        ),
-      ),
+          backgroundColor: Colors.black,
+          title: GestureDetector(
+            child: Image.asset(
+              'images/giphy_logo.gif',
+              width: 500,
+              height: 100,
+              alignment: Alignment.centerLeft,
+            ),
+            onTap: () {
+              setState(() {
+                _search = null;
+                _offset = 0;
+                getGifs(_search, _offset);
+              });
+            },
+          )),
       backgroundColor: darkPrimary,
       body: Column(
         children: <Widget>[
