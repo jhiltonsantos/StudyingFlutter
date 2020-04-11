@@ -5,7 +5,7 @@ class DiceHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white12,
+      color: Colors.blue[500],
     );
   }
 }
