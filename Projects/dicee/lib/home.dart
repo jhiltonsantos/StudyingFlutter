@@ -4,8 +4,29 @@ import 'package:flutter/material.dart';
 class DiceHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue[500],
+    return Scaffold(
+      backgroundColor: Colors.blue[500],
+      body: DicePage(),
+    );
+  }
+}
+
+class DicePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Expanded(
+          child: Image(
+            image: AssetImage('images/dice1.png'),
+          ),
+        ),
+        Expanded(
+          child: Image(
+            image: AssetImage('images/dice1.png'),
+          ),
+        ),
+      ],
     );
   }
 }
