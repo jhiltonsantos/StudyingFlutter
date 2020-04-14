@@ -5,7 +5,7 @@ class DiceHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[500],
+      backgroundColor: Colors.blueAccent,
       body: DicePage(),
     );
   }
@@ -18,10 +18,16 @@ class DicePage extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Expanded(
-            child: Image.asset('images/dice1.png'),
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Image.asset('images/dice1.png'),
+            ),
           ),
           Expanded(
-            child: Image.asset('images/dice1.png'),
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Image.asset('images/dice2.png'),
+            ),
           ),
         ],
       ),
