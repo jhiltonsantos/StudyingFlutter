@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// ignore: camel_case_types
 class DiceHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -11,7 +10,14 @@ class DiceHome extends StatelessWidget {
   }
 }
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  int lefDiceNumber = 2;
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -20,14 +26,15 @@ class DicePage extends StatelessWidget {
           Expanded(
             child: FlatButton(
               child: Image.asset('images/dice1.png'),
-              onPressed: () {},
+              onPressed: () {
+                return Image.asset('images/dice$lefDiceNumber.png');
+              },
             ),
           ),
           Expanded(
             child: FlatButton(
               child: Image.asset('images/dice2.png'),
-              onPressed: () {
-              },
+              onPressed: () {},
             ),
           ),
         ],
