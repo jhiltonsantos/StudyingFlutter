@@ -18,7 +18,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'Pergunta',
+                'Question',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25.0, color: Colors.white),
               ),
@@ -32,7 +32,7 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.green,
               child: Text(
-                'Verdadeiro',
+                'True',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
@@ -49,7 +49,7 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.red,
               child: Text(
-                'Falso',
+                'False',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
@@ -59,6 +59,20 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.check,
+              color: Colors.green,
+
+            ),
+            Icon(
+              Icons.close,
+              color: Colors.red,
+              
+            )
+          ]
+        )
       ],
     );
   }
