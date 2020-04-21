@@ -6,7 +6,7 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  int questionNumber = 2;
+  int questionNumber = 0;
   List<String> questions = [
     'Dentre as alternativas a seguir, qual não faz parte de um item de hardware?',
     'Selecione a opção abaixo que não caracteriza uma medida de segurança para seu computador.',
@@ -57,7 +57,14 @@ class _QuizPageState extends State<QuizPage> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              onPressed: () {},
+              onPressed: () {
+                questionNumber++;
+                if ((questions.length) > questionNumber) {
+                  setState(() {});
+                } else {
+                  questionNumber--;
+                }
+              },
             ),
           ),
         ),
@@ -75,7 +82,14 @@ class _QuizPageState extends State<QuizPage> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              onPressed: () {},
+              onPressed: () {
+                questionNumber++;
+                if ((questions.length) > questionNumber) {
+                  setState(() {});
+                } else {
+                  questionNumber--;
+                }
+              },
             ),
           ),
         ),
@@ -93,7 +107,14 @@ class _QuizPageState extends State<QuizPage> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              onPressed: () {},
+              onPressed: () {
+                questionNumber++;
+                if ((questions.length) > questionNumber) {
+                  setState(() {});
+                } else {
+                  questionNumber--;
+                }
+              },
             ),
           ),
         ),
