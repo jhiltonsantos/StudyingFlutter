@@ -6,6 +6,24 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  int questionNumber = 2;
+  List<String> questions = [
+    'Dentre as alternativas a seguir, qual não faz parte de um item de hardware?',
+    'Selecione a opção abaixo que não caracteriza uma medida de segurança para seu computador.',
+    'SQL ou Linguagem de Consulta Estruturada é a linguagem padrão para consultas e alterações de dados em bancos de dados relacionais. No laboratório de qual empresa famosa de informática foi desenvolvida essa linguagem?',
+  ];
+  List<List> answers = [
+    ['Mouse', 'Processador', 'Debian'],
+    [
+      'Deixar o Firewall ativado',
+      'Mascarar seu endereçamento IP utilizando o proxy',
+      'Utilizar o desfragmentador de discos do windows'
+    ],
+    ['IBM', 'Microsoft', 'Oracle']
+  ];
+
+  List<Widget> scoreKeeper = [];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,7 +36,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'Question',
+                questions[questionNumber],
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25.0, color: Colors.white),
               ),
@@ -30,13 +48,14 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(15.0),
             child: FlatButton(
               textColor: Colors.white,
-              color: Colors.green,
+              color: Colors.teal,
               child: Text(
-                'True',
+                answers[questionNumber][0],
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
                 ),
+                textAlign: TextAlign.center,
               ),
               onPressed: () {},
             ),
@@ -47,32 +66,37 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(15.0),
             child: FlatButton(
               textColor: Colors.white,
-              color: Colors.red,
+              color: Colors.orangeAccent,
               child: Text(
-                'False',
+                answers[questionNumber][1],
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
                 ),
+                textAlign: TextAlign.center,
               ),
               onPressed: () {},
             ),
           ),
         ),
-        Row(
-          children: <Widget>[
-            Icon(
-              Icons.check,
-              color: Colors.green,
-
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.all(15.0),
+            child: FlatButton(
+              textColor: Colors.white,
+              color: Colors.blue,
+              child: Text(
+                answers[questionNumber][2],
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              onPressed: () {},
             ),
-            Icon(
-              Icons.close,
-              color: Colors.red[300],
-
-            )
-          ]
-        )
+          ),
+        ),
       ],
     );
   }
