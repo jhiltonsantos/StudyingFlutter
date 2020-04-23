@@ -15,7 +15,9 @@ class Question {
 }
 
 class QuizQuestion {
-  List<Question> questionBank = [
+  int _questionNumber = 0;
+
+  List<Question> _questionBank = [
     Question(
         q: 'Dentre as alternativas a seguir, qual não faz parte de um item de hardware?',
         a1: 'Mouse',
@@ -35,4 +37,30 @@ class QuizQuestion {
         a3: 'Oracle',
         r: [true, false, false])
   ];
+
+  void nextQuestion() {
+    if (_questionNumber < _questionBank.length) {
+      _questionNumber++;
+    }
+  }
+
+  String getQuestionText() {
+    return _questionBank[_questionNumber].questionText;
+  }
+
+  String getQuestionA1() {
+    return _questionBank[_questionNumber].questionAnswer1;
+  }
+
+  String getQuestionA2() {
+    return _questionBank[_questionNumber].questionAnswer2;
+  }
+
+  String getQuestionA3() {
+    return _questionBank[_questionNumber].questionAnswer3;
+  }
+
+  List getListAnswers() {
+    return _questionBank[_questionNumber].alternatives;
+  }
 }

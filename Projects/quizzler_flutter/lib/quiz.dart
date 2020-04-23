@@ -9,7 +9,6 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  int questionNumber = 0;
   List<Widget> scoreKeeper = [];
 
   @override
@@ -24,7 +23,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizQuestion.questionBank[questionNumber].questionText,
+                quizQuestion.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25.0, color: Colors.white),
               ),
@@ -38,7 +37,7 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.teal,
               child: Text(
-                quizQuestion.questionBank[questionNumber].questionAnswer1,
+                quizQuestion.getQuestionA1(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
@@ -47,18 +46,15 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 bool correctAnswer =
-                    quizQuestion.questionBank[questionNumber].alternatives[0];
+                    quizQuestion.getListAnswers()[0];
                 if (correctAnswer) {
                   print('Está correto');
                 } else {
                   print('Esta errado');
                 }
-                questionNumber++;
-                //if ((questions.length) > questionNumber) {
-                setState(() {});
-                //} else {
-                //            questionNumber--;
-                //          }
+                setState(() {
+                  quizQuestion.nextQuestion();
+                });
               },
             ),
           ),
@@ -70,7 +66,7 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.orangeAccent,
               child: Text(
-                quizQuestion.questionBank[questionNumber].questionAnswer2,
+                quizQuestion.getQuestionA2(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
@@ -79,18 +75,16 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 bool correctAnswer =
-                    quizQuestion.questionBank[questionNumber].alternatives[1];
+                    quizQuestion.getListAnswers()[1];
                 if (correctAnswer) {
                   print('Está correto');
                 } else {
                   print('Esta errado');
                 }
-                questionNumber++;
-                //if ((questions.length) > questionNumber) {
-                setState(() {});
-                //} else {
-                //            questionNumber--;
-                //          }
+
+                setState(() {
+                  quizQuestion.nextQuestion();
+                });
               },
             ),
           ),
@@ -102,7 +96,7 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.blue,
               child: Text(
-                quizQuestion.questionBank[questionNumber].questionAnswer3,
+                quizQuestion.getQuestionA3(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
@@ -110,18 +104,16 @@ class _QuizPageState extends State<QuizPage> {
                 textAlign: TextAlign.center,
               ),
               onPressed: () {
-                bool correctAnswer = quizQuestion.questionBank[questionNumber].alternatives[2];
+                bool correctAnswer =
+                    quizQuestion.getListAnswers()[2];
                 if (correctAnswer) {
                   print('Está correto');
                 } else {
                   print('Esta errado');
                 }
-                questionNumber++;
-                //if ((questions.length) > questionNumber) {
-                setState(() {});
-                //} else {
-                //            questionNumber--;
-                //          }
+                setState(() {
+                  quizQuestion.nextQuestion();
+                });
               },
             ),
           ),
