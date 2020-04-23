@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'lists.dart';
-import 'question.dart';
+import 'package:quizzlerflutter/question.dart';
+
+QuizQuestion quizQuestion = QuizQuestion();
 
 class QuizPage extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questionBank[questionNumber].questionText,
+                quizQuestion.questionBank[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25.0, color: Colors.white),
               ),
@@ -37,7 +38,7 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.teal,
               child: Text(
-                questionBank[questionNumber].questionAnswer1,
+                quizQuestion.questionBank[questionNumber].questionAnswer1,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
@@ -46,7 +47,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 bool correctAnswer =
-                    questionBank[questionNumber].alternatives[0];
+                    quizQuestion.questionBank[questionNumber].alternatives[0];
                 if (correctAnswer) {
                   print('Está correto');
                 } else {
@@ -69,7 +70,7 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.orangeAccent,
               child: Text(
-                questionBank[questionNumber].questionAnswer2,
+                quizQuestion.questionBank[questionNumber].questionAnswer2,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
@@ -78,7 +79,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 bool correctAnswer =
-                    questionBank[questionNumber].alternatives[1];
+                    quizQuestion.questionBank[questionNumber].alternatives[1];
                 if (correctAnswer) {
                   print('Está correto');
                 } else {
@@ -101,7 +102,7 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.blue,
               child: Text(
-                questionBank[questionNumber].questionAnswer3,
+                quizQuestion.questionBank[questionNumber].questionAnswer3,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
@@ -109,7 +110,7 @@ class _QuizPageState extends State<QuizPage> {
                 textAlign: TextAlign.center,
               ),
               onPressed: () {
-                bool correctAnswer = questionBank[questionNumber].alternatives[2];
+                bool correctAnswer = quizQuestion.questionBank[questionNumber].alternatives[2];
                 if (correctAnswer) {
                   print('Está correto');
                 } else {
