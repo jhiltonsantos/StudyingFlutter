@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'questionAnswers.dart';
+import 'lists.dart';
+import 'question.dart';
 
 class QuizPage extends StatefulWidget {
   @override
@@ -8,8 +9,6 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   int questionNumber = 0;
-
-
   List<Widget> scoreKeeper = [];
 
   @override
@@ -24,7 +23,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[questionNumber],
+                questionBank[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25.0, color: Colors.white),
               ),
@@ -38,7 +37,7 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.teal,
               child: Text(
-                alternatives[questionNumber][0],
+                questionBank[questionNumber].questionAnswer1,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
@@ -46,18 +45,19 @@ class _QuizPageState extends State<QuizPage> {
                 textAlign: TextAlign.center,
               ),
               onPressed: () {
-                bool correctAnswer = answers[questionNumber][0];
+                bool correctAnswer =
+                    questionBank[questionNumber].alternatives[0];
                 if (correctAnswer) {
                   print('Está correto');
                 } else {
                   print('Esta errado');
                 }
                 questionNumber++;
-                if ((questions.length) > questionNumber) {
-                  setState(() {});
-                } else {
-                  questionNumber--;
-                }
+                //if ((questions.length) > questionNumber) {
+                setState(() {});
+                //} else {
+                //            questionNumber--;
+                //          }
               },
             ),
           ),
@@ -69,7 +69,7 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.orangeAccent,
               child: Text(
-                alternatives[questionNumber][1],
+                questionBank[questionNumber].questionAnswer2,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
@@ -77,18 +77,19 @@ class _QuizPageState extends State<QuizPage> {
                 textAlign: TextAlign.center,
               ),
               onPressed: () {
-                bool correctAnswer = answers[questionNumber][1];
+                bool correctAnswer =
+                    questionBank[questionNumber].alternatives[1];
                 if (correctAnswer) {
                   print('Está correto');
                 } else {
                   print('Esta errado');
                 }
                 questionNumber++;
-                if ((questions.length) > questionNumber) {
-                  setState(() {});
-                } else {
-                  questionNumber--;
-                }
+                //if ((questions.length) > questionNumber) {
+                setState(() {});
+                //} else {
+                //            questionNumber--;
+                //          }
               },
             ),
           ),
@@ -100,7 +101,7 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.blue,
               child: Text(
-                alternatives[questionNumber][2],
+                questionBank[questionNumber].questionAnswer3,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
@@ -108,18 +109,18 @@ class _QuizPageState extends State<QuizPage> {
                 textAlign: TextAlign.center,
               ),
               onPressed: () {
-                bool correctAnswer = answers[questionNumber][2];
+                bool correctAnswer = questionBank[questionNumber].alternatives[2];
                 if (correctAnswer) {
                   print('Está correto');
                 } else {
                   print('Esta errado');
                 }
                 questionNumber++;
-                if ((questions.length) > questionNumber) {
-                  setState(() {});
-                } else {
-                  questionNumber--;
-                }
+                //if ((questions.length) > questionNumber) {
+                setState(() {});
+                //} else {
+                //            questionNumber--;
+                //          }
               },
             ),
           ),
