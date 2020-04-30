@@ -1,6 +1,8 @@
 import 'story.dart';
 
 class StoryBrain {
+  int _storyNumber = 0;
+
   List<Story> _storyData = [
     Story(
         storyTitle:
@@ -38,7 +40,6 @@ class StoryBrain {
   String getChoice1() => _storyData[_storyNumber].choice1;
 
   String getChoice2() => _storyData[_storyNumber].choice2;
-  int _storyNumber = 0;
 
   void nextStory(int userChoice) {
     if (_storyNumber == 0 && userChoice == 1) {
