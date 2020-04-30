@@ -29,11 +29,10 @@ class _StoryPageState extends State<StoryPage> {
       body: Container(
         //TODO: Step 1 - Add background.png to this Container as a background image.
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('images/background.png'),
-            fit: BoxFit.cover,
-          )
-        ),
+            image: DecorationImage(
+          image: AssetImage('images/background.png'),
+          fit: BoxFit.cover,
+        )),
         padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
         constraints: BoxConstraints.expand(),
         child: SafeArea(
@@ -58,7 +57,9 @@ class _StoryPageState extends State<StoryPage> {
                   onPressed: () {
                     //Choice 1 made by user.
                     //TODO: Step 18 - Call the nextStory() method from storyBrain and pass the number 1 as the choice made by the user.
-                    sB1.nextStory(1);
+                    setState(() {
+                      sB1.nextStory(1);
+                    });
                   },
                   color: Colors.red,
                   child: Text(
@@ -81,7 +82,9 @@ class _StoryPageState extends State<StoryPage> {
                   onPressed: () {
                     //Choice 2 made by user.
                     //TODO: Step 19 - Call the nextStory() method from storyBrain and pass the number 2 as the choice made by the user.
-                    sB1.nextStory(2);
+                    setState(() {
+                      sB1.nextStory(2);
+                    });
                   },
                   color: Colors.blue,
                   child: Text(
