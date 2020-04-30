@@ -7,9 +7,5 @@ class Story {
   String choice1;
   String choice2;
 
-  Story(String s, String c1, String c2) {
-    storyTitle = s;
-    choice1 = c1;
-    choice2 = c2;
-  }
+  Story({this.storyTitle, this.choice1, this.choice2});
 }
