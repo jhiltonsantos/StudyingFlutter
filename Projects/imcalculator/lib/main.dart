@@ -8,7 +8,9 @@ class IMCCalculator extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.redAccent,
+        primaryColor: Colors.blueAccent,
+        scaffoldBackgroundColor: Colors.blueAccent,
+        accentColor: Colors.yellow,
       ),
       home: InputPage(),
     );
