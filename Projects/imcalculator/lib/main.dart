@@ -7,6 +7,9 @@ class IMCCalculator extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.redAccent,
+      ),
       home: InputPage(),
     );
   }
@@ -33,4 +36,3 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-
