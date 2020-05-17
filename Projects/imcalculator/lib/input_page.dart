@@ -4,7 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'gender_form.dart';
 import 'box_contains.dart';
-import 'constans.dart';
+import 'constants.dart';
+import 'round_icon_button.dart';
 
 enum GenderType { female, male }
 
@@ -15,8 +16,9 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   GenderType selectGender;
-  int height = 160;
-  int weight = 50;
+  int height = 174;
+  int weight = 63;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -128,16 +130,24 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            FloatingActionButton(
-                              backgroundColor: kInactiveIconColor,
-                              child: Icon(Icons.add, color: Colors.white),
+                            RoundIconButton(
+                              iconChild: FontAwesomeIcons.minus,
+                              state: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
                             ),
                             SizedBox(
                               width: 15.0,
                             ),
-                            FloatingActionButton(
-                              backgroundColor: kInactiveIconColor,
-                              child: Icon(Icons.add, color: Colors.white),
+                            RoundIconButton(
+                              iconChild: FontAwesomeIcons.plus,
+                              state: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
                             ),
                           ],
                         )
@@ -146,8 +156,52 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
                 Expanded(
-                  child: BoxContains(corCard: kInactiveCardColor),
-                ),
+                    child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: BoxContains(
+                        corCard: kInactiveCardColor,
+                        cardChild: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'IDADE',
+                              style: labelTextStyle(kInactiveIconColor),
+                            ),
+                            Text(
+                              age.toString(),
+                              style: kTextStyleBiggest,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                RoundIconButton(
+                                  iconChild: FontAwesomeIcons.minus,
+                                  state: () {
+                                    setState(() {
+                                      age--;
+                                    });
+                                  },
+                                ),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
+                                RoundIconButton(
+                                  iconChild: FontAwesomeIcons.plus,
+                                  state: () {
+                                    setState(() {
+                                      age++;
+                                    });
+                                  },
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
               ],
             ),
           ),

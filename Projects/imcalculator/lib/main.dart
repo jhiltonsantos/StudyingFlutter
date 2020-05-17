@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'input_page.dart';
-import 'constans.dart';
+import 'constants.dart';
 
 void main() => runApp(IMCCalculator());
 

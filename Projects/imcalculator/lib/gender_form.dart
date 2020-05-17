@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'constans.dart';
 
 TextStyle labelTextStyle(Color cor) {
   return TextStyle(fontSize: 18.0, color: cor);
