@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:imcalculator/components/bottom_calculate.dart';
+import 'package:imcalculator/screens/result_page.dart';
 
-import 'gender_form.dart';
-import 'box_contains.dart';
-import 'constants.dart';
-import 'round_icon_button.dart';
+import '../components/gender_form.dart';
+import '../components/box_contains.dart';
+import '../constants.dart';
+import '../components/round_icon_button.dart';
+import '../components/calculate_imc.dart';
 
 enum GenderType { female, male }
 
@@ -98,8 +101,8 @@ class _InputPageState extends State<InputPage> {
                   ),
                   Slider(
                     value: height.toDouble(),
-                    min: 120.0,
-                    max: 220.0,
+                    min: 110.0,
+                    max: 230.0,
                     onChanged: (double newHeight) {
                       setState(() {
                         height = newHeight.toInt();
@@ -205,6 +208,27 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
+          BottomCalculate(
+            onTapFunction: () {
+              Calculate calc = Calculate(
+                  height: height,
+                  weight: weight,
+                  age: age,
+                  gender: selectGender.toString());
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(
+                    imcResult: calc.calculateIMC(),
+                    resultText: calc.getResult(),
+                    interpretation: calc.getInterpretation(),
+                  ),
+                ),
+              );
+            },
+            buttonText: 'CALCULAR',
+          )
         ],
       ),
     );
