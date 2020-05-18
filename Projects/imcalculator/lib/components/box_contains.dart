@@ -14,9 +14,9 @@ class BoxContains extends StatelessWidget {
       onTap: onPressGender,
       child: Container(
         child: Material(
-          elevation: 19.0,
+          elevation: 6.0,
           color: corCard,
-          shadowColor: Colors.black87,
+          shadowColor: Colors.black,
           type: MaterialType.card,
           borderRadius: BorderRadius.circular(10.0),
           child: cardChild,
