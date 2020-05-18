@@ -14,12 +14,12 @@ class RoundIconButton extends StatelessWidget {
     return RawMaterialButton(
       child: Icon(iconChild),
       onPressed: state,
-      elevation: 7.0,
+      elevation: 15.0,
       shape: CircleBorder(),
-      fillColor: kInactiveIconColor,
+      fillColor: kActiveCardColor,
       constraints: BoxConstraints.tightFor(
-        width: 46.0,
-        height: 46.0,
+        width: 48.0,
+        height: 48.0,
       ),
     );
   }
