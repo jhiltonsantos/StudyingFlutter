@@ -7,6 +7,7 @@ const kActiveCardColor = Color(0xFF111328);
 const kActiveIconColor = kBottomContainerColor;
 const kInactiveIconColor = Color(0xFF8D8E98);
 const kBottomContainerColor = Color(0xFFEB1555);
+const kShadowContainer = Color(0x1AEB1555);
 const kOverlayBottomColor = Color(0x29EB1555);
 const kResultColor = Color(0xFF24D876);
 

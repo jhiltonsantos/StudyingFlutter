@@ -18,7 +18,7 @@ class ResultPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'IMC Calculadora',
+          'Calculadora de IMC',
         ),
       ),
       body: Column(
