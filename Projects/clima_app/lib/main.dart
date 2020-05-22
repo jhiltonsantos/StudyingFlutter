@@ -1,16 +1,12 @@
+import 'package:climaapp/screens/loading_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Myapp());
-}
-
-class Myapp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: true,
       theme: ThemeData.dark(),
-    );
-  }
+      home: LoadingScreen(),
+    ),
+  );
 }
-
-
