@@ -1,4 +1,20 @@
+import 'package:climaapp/services/networking.dart';
+import 'package:climaapp/services/location.dart';
+import 'package:climaapp/utilities/constants.dart';
+
 class WeatherModel {
+
+  Future<dynamic> getLocationWeather() async {
+    Location location = Location();
+    await location.getCurrentLocation();
+
+    NetworkHelper networkHelper = NetworkHelper(
+        '$openWeatherMap?lat=${location.currentLatitude}&lon=${location.currentLongitude}&appid=$apiKey&units=metric');
+
+    var weatherData = await networkHelper.getData();
+    return weatherData;
+  }
+
   String getWeatherIcon(int condition) {
     if (condition < 300) {
       return '🌩';
@@ -21,13 +37,13 @@ class WeatherModel {
 
   String getMessage(int temp) {
     if (temp > 25) {
-      return 'It\'s 🍦 time';
+      return 'É hora\n do 🍦 ';
     } else if (temp > 20) {
-      return 'Time for shorts and 👕';
+      return 'Hora de shorts e 👕';
     } else if (temp < 10) {
-      return 'You\'ll need 🧣 and 🧤';
+      return 'Você precisará de 🧣 e 🧤';
     } else {
-      return 'Bring a 🧥 just in case';
+      return 'No caso, traga um 🧥  ';
     }
   }
 }
