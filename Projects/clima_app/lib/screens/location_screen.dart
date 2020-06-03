@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:climaapp/utilities/constants.dart';
 import 'package:climaapp/services/weather.dart';
@@ -27,8 +28,7 @@ class _LocationScreenState extends State<LocationScreen> {
 
   void updateUI(dynamic weatherData) {
     setState(() {
-      double temp =  weatherData['main']['temp'];
-      temperature = temp.toInt();
+      temperature = weatherData['main']['temp'];
       city = weatherData['name'];
       weatherIcon = weather.getWeatherIcon(weatherData['weather'][0]['id']);
       message = weather.getMessage(temperature);
@@ -50,44 +50,50 @@ class _LocationScreenState extends State<LocationScreen> {
         constraints: BoxConstraints.expand(),
         child: SafeArea(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.all(15.0),
-                    child: FloatingActionButton(
-                      onPressed: () async {
-                        var weatherData = await weather.getLocationWeather();
-                        updateUI(weatherData);
-                      },
-                      child: Icon(
-                        Icons.near_me,
-                        color: Colors.white,
-                        size: 30.0,
-                      ),
-                      backgroundColor: Colors.black12,
-                      elevation: 20.0,
-                    ),
+                    child: FlatButton(
+                        onPressed: () async {
+                          var weatherData = await weather.getLocationWeather();
+                          updateUI(weatherData);
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Icon(
+                            Icons.near_me,
+                            color: Colors.white,
+                            size: 50.0,
+                          ),
+                        ),
+                        color: Colors.black12,
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0))),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 15.0, top: 15.0, left: 10.0),
-                    child: FloatingActionButton(
-                      onPressed: () {},
-                      child: Icon(
-                        Icons.location_city,
-                        color: Colors.white,
-                        size: 30.0,
-                      ),
-                      backgroundColor: Colors.black12,
-                      elevation: 20.0,
-                    ),
+                    padding: EdgeInsets.all(10.0),
+                    child: FlatButton(
+                        onPressed: () {},
+                        child: Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Icon(
+                            Icons.location_city,
+                            color: Colors.white,
+                            size: 50.0,
+                          ),
+                        ),
+                        color: Colors.black12,
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0))),
                   ),
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 15.0),
+                padding: EdgeInsets.all(20.0),
                 child: Row(
                   children: <Widget>[
                     Text(
@@ -101,14 +107,17 @@ class _LocationScreenState extends State<LocationScreen> {
                   ],
                 ),
               ),
+              Expanded(
+                child: SizedBox(),
+              ),
               Padding(
-                padding: EdgeInsets.only(right: 15.0),
+                padding: EdgeInsets.all(20.0),
                 child: Text(
                   "$message em $city!",
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),
-              ),
+              )
             ],
           ),
         ),
