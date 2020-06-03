@@ -1,6 +1,7 @@
+import 'package:climaapp/services/networking.dart';
 import 'package:flutter/material.dart';
 import 'package:climaapp/services/location.dart';
-import 'package:http/http.dart' as http;
+import 'package:climaapp/utilities/constants.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -8,23 +9,28 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+  double latitude;
+  double longitude;
+
   @override
   void initState() {
     super.initState();
+    getLocationData();
   }
 
-  void getLocation() async {
+  void getLocationData() async {
     Location location = Location();
     await location.getCurrentLocation();
-    print(location.currentLongitude);
-    print(location.currentLatitude);
+    latitude = location.currentLatitude;
+    longitude = location.currentLongitude;
+
+    NetworkHelper networkHelper = NetworkHelper(
+        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey');
+
+    var weatherData = await networkHelper.getData();
   }
 
-  void getData() async {
-    http.Response getAPI = await http.get(
-        'https://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=439d4b804bc8187953eb36d2a8c26a02');
-    print(getAPI.body);
-  }
+  void getData() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +41,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
           Center(
             child: FlatButton(
               onPressed: () {
-                getLocation();
+                getLocationData();
                 getData();
               },
               color: Colors.indigoAccent,
