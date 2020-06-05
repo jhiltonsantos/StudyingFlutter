@@ -37,7 +37,7 @@ class WeatherModel {
 
   String getMessage(int temp) {
     if (temp > 25) {
-      return 'É hora\n do 🍦 ';
+      return 'É hora do 🍦 \n';
     } else if (temp > 20) {
       return 'Hora de shorts e 👕';
     } else if (temp < 10) {
