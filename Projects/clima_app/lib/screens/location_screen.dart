@@ -134,7 +134,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 25.0, right: 20.0, top: 10.0),
+                padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
                 child: Text('$formattedDate', style: kTextDateFormat),
               ),
               Padding(
