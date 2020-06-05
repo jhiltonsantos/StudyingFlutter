@@ -1,6 +1,7 @@
 import 'package:climaapp/screens/location_screen.dart';
 import 'package:climaapp/services/weather.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoadingScreen extends StatefulWidget {
@@ -31,7 +32,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SpinKitSquareCircle(
+        child: SpinKitChasingDots(
           color: Colors.orangeAccent,
           size: 100.0,
         ),
