@@ -93,7 +93,8 @@ class _LocationScreenState extends State<LocationScreen> {
                       padding: EdgeInsets.all(15.0),
                       child: FlatButton(
                           onPressed: () async {
-                            var weatherData = await weather.getLocationWeather();
+                            var weatherData =
+                                await weather.getLocationWeather();
                             updateUI(weatherData);
                           },
                           child: Padding(
@@ -114,12 +115,12 @@ class _LocationScreenState extends State<LocationScreen> {
                           onPressed: () async {
                             var typedName = await Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                                  return CityScreen();
-                                }));
+                              return CityScreen();
+                            }));
 
                             if (typedName != null) {
                               var weatherData =
-                              await weather.getCityWeather(typedName);
+                                  await weather.getCityWeather(typedName);
                               updateUI(weatherData);
                             }
                           },
@@ -142,7 +143,8 @@ class _LocationScreenState extends State<LocationScreen> {
                   child: Text('$formattedDate', style: kTextDateFormat),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+                  padding:
+                      EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
                   child: Row(
                     children: <Widget>[
                       Text(
@@ -176,28 +178,27 @@ class _LocationScreenState extends State<LocationScreen> {
   }
 
   Future<bool> _onBackPressed() {
-    print('VOLTAR');
     return showDialog(
-      context: context,
-      builder: (context) => new AlertDialog(
-        title: new Text('Você tem certeza?'),
-        content: new Text('Você irá sair da aplicação'),
-        actions: <Widget>[
-          new FlatButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: new Text('Não'),
+          context: context,
+          builder: (context) => new AlertDialog(
+            title: new Text('Você tem certeza?'),
+            content: new Text('Você irá sair da aplicação'),
+            actions: <Widget>[
+              new FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+                child: new Text('Não'),
+              ),
+              new FlatButton(
+                onPressed: () {
+                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                },
+                child: new Text('Sim'),
+              ),
+            ],
           ),
-          new FlatButton(
-            onPressed: () {
-              SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-            },
-            child: new Text('Sim'),
-          ),
-        ],
-      ),
-    ) ?? false;
+        ) ??
+        false;
   }
-
 }
-
-//'☀️'
