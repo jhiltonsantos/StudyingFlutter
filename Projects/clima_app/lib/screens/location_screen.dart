@@ -39,7 +39,8 @@ class _LocationScreenState extends State<LocationScreen> {
       }
       temperature = (weatherData['main']['temp']).toInt();
       city = weatherData['name'];
-      weatherIcon = weather.getWeatherIcon((weatherData['weather'][0]['id']).toInt());
+      weatherIcon =
+          weather.getWeatherIcon((weatherData['weather'][0]['id']).toInt());
       message = weather.getMessage(temperature);
     });
   }
@@ -50,7 +51,7 @@ class _LocationScreenState extends State<LocationScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/ensolarado.jpg'),
+            image: AssetImage('images/nublado.jpg'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.white.withOpacity(0.8), BlendMode.dstATop),
@@ -76,34 +77,38 @@ class _LocationScreenState extends State<LocationScreen> {
                           child: Icon(
                             Icons.near_me,
                             color: Colors.white,
-                            size: 50.0,
+                            size: 30.0,
                           ),
                         ),
                         color: Colors.black12,
                         shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30.0))),
+                            borderRadius: new BorderRadius.circular(50.0))),
                   ),
                   Padding(
                     padding: EdgeInsets.all(10.0),
                     child: FlatButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context) {
-                              return CityScreen();
-                            }
-                          ));
+                        onPressed: () async {
+                          var typedName = await Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return CityScreen();
+                          }));
+
+                          if (typedName != null) {
+                            var weatherData = await weather.getCityWeather(typedName);
+                            updateUI(weatherData);
+                          }
                         },
                         child: Padding(
                           padding: EdgeInsets.all(5.0),
                           child: Icon(
                             Icons.map,
                             color: Colors.white,
-                            size: 50.0,
+                            size: 30.0,
                           ),
                         ),
                         color: Colors.black12,
                         shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30.0))),
+                            borderRadius: new BorderRadius.circular(50.0))),
                   ),
                 ],
               ),

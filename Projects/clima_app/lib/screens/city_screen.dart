@@ -9,8 +9,11 @@ class CityScreen extends StatefulWidget {
 }
 
 class _CityScreenState extends State<CityScreen> {
+  final _random = new Random();
 
-  var numberRandom = new Random(4);
+  int next() => _random.nextInt(7);
+
+  String cityName;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class _CityScreenState extends State<CityScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/home$numberRandom.jpeg'),
+            image: AssetImage('images/home${next()}.jpeg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -28,27 +31,55 @@ class _CityScreenState extends State<CityScreen> {
             children: <Widget>[
               Align(
                 alignment: Alignment.topLeft,
-                child: FlatButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 50.0,
-                  ),
+                child: Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: FlatButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: Icon(
+                              Icons.arrow_back_ios,
+                              size: 30.0,
+                            ),
+                          ),
+                          color: Colors.black12,
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(50.0))),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        'Obter Cidade',
+                        style: kButtonTextStyle,
+                      ),
+                    )
+                  ],
                 ),
               ),
               Container(
                 padding: EdgeInsets.all(20.0),
-                child: null,
-              ),
-              FlatButton(
-                onPressed: () {},
-                child: Text(
-                  'Get Weather',
-                  style: kButtonTextStyle,
+                child: TextField(
+                  decoration: kTextFieldInputDecoration,
+                  onChanged: (value) {
+                    cityName = value;
+                  },
                 ),
               ),
+              FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context, cityName);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Icon(Icons.search),
+                  ),
+                  color: Colors.black12,
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(50.0))),
             ],
           ),
         ),
