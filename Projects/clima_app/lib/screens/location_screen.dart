@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:climaapp/utilities/constants.dart';
 import 'package:climaapp/services/weather.dart';
+import 'package:intl/intl.dart';
 
 import 'city_screen.dart';
 
@@ -21,6 +22,10 @@ class _LocationScreenState extends State<LocationScreen> {
   String weatherIcon;
   String city;
   String message;
+  int condition;
+
+  DateTime now = DateTime.now();
+  String formattedDate;
 
   @override
   void initState() {
@@ -39,19 +44,34 @@ class _LocationScreenState extends State<LocationScreen> {
       }
       temperature = (weatherData['main']['temp']).toInt();
       city = weatherData['name'];
-      weatherIcon =
-          weather.getWeatherIcon((weatherData['weather'][0]['id']).toInt());
+      condition = weatherData['weather'][0]['id'];
+      weatherIcon = weather.getWeatherIcon(condition);
       message = weather.getMessage(temperature);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    formattedDate = DateFormat('EEE d MMM').format(now);
+
+    String backgroundImage() {
+      int hour = now.hour.toInt();
+      if (condition < 600) {
+        return 'images/nublado.jpg';
+      } else {
+        if (hour >= 6 && hour <= 18) {
+          return 'images/ensolarado.jpg';
+        } else {
+          return 'images/noite.jpg';
+        }
+      }
+    }
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/nublado.jpg'),
+            image: AssetImage(backgroundImage()),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.white.withOpacity(0.8), BlendMode.dstATop),
@@ -94,7 +114,8 @@ class _LocationScreenState extends State<LocationScreen> {
                           }));
 
                           if (typedName != null) {
-                            var weatherData = await weather.getCityWeather(typedName);
+                            var weatherData =
+                                await weather.getCityWeather(typedName);
                             updateUI(weatherData);
                           }
                         },
@@ -113,7 +134,11 @@ class _LocationScreenState extends State<LocationScreen> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.only(left: 25.0, right: 20.0, top: 10.0),
+                child: Text('$formattedDate', style: kTextDateFormat),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
                 child: Row(
                   children: <Widget>[
                     Text(

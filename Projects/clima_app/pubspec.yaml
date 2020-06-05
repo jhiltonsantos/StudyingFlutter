@@ -14,7 +14,7 @@ dependencies:
   geolocator: ^5.3.1
   http: ^0.12.1
   flutter_spinkit: ^4.1.2+1
-  font_awesome_flutter: ^8.8.1
+  intl: ^0.16.1
 
 dev_dependencies:
   flutter_test:
@@ -30,4 +30,19 @@ flutter:
     - family: Spartan MB
       fonts:
         - asset: fonts/SpartanMB-Black.otf
+          weight: 900
+
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto.ttf
+          weight: 900
+
+    - family: RobotoRegular
+      fonts:
+        - asset: fonts/RobotoRegular.ttf
+          weight: 900
+
+    - family: Roboto-Bold
+      fonts:
+        - asset: fonts/Roboto-Bold.ttf
           weight: 900
