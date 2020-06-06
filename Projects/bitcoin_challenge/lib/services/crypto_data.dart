@@ -4,7 +4,7 @@ import 'dart:convert';
 
 class CryptoCoinData {
   Future getCryptoCoin(String currentCoin) async {
-    Map<String, String> cryptoCoins = {};
+    Map cryptoCoins = {};
 
     for (String crypto in cryptoList) {
       String url =
@@ -14,12 +14,12 @@ class CryptoCoinData {
       if (response.statusCode == 200) {
         var decodedData = jsonDecode(response.body);
         var price = decodedData['data']['buy'];
-        print(price);
-        cryptoCoins[crypto] = price.toStringAsFixed(0);
+        cryptoCoins[crypto] = price.toStringAsFixed(2);
       } else {
         print(response.statusCode);
       }
     }
+    print('Value $cryptoCoins');
     return cryptoCoins;
   }
 }

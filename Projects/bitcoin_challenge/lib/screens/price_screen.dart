@@ -58,7 +58,7 @@ class _PriceScreenState extends State<PriceScreen> {
     );
   }
 
-  Map<String, String> coinValues = {};
+  Map coinValues = {};
 
   @override
   void initState() {
@@ -96,7 +96,7 @@ class _PriceScreenState extends State<PriceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('🤑 Coin Ticker'),
+        title: Text('Coin Ticker'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
