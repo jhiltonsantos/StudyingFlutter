@@ -10,7 +10,8 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin{
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
   AnimationController controller;
 
   @override
@@ -18,16 +19,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     super.initState();
 
     controller = AnimationController(
-      duration: Duration(seconds: 2);
-      vsync:
+      duration: Duration(milliseconds: 500),
+      vsync: this,
     );
 
+    controller.forward();
 
+    controller.addListener(() {
+      setState(() {});
+      print(controller.value);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFd3e9a9).withOpacity(controller.value),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -40,17 +47,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                   tag: 'logo',
                   child: Container(
                     child: Image.asset('images/logo.png'),
-                    height: 60.0,
+                    height: 80,
                   ),
                 ),
                 Center(
                   child: Text(
                     'Chat',
                     style: TextStyle(
-                      color: Color(0xFFBB86FC),
+                      color: Color(0xFF5a008e).withOpacity(controller.value),
                       fontSize: 45.0,
                       fontWeight: FontWeight.w900,
-                    ),textAlign: TextAlign.center,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ],
@@ -62,7 +70,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
                 elevation: 5.0,
-                color: Colors.lightBlueAccent,
+                color: Color(0xFF00568e).withOpacity(controller.value),
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
@@ -72,6 +80,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                   height: 42.0,
                   child: Text(
                     'Log In',
+                    style: TextStyle(
+                        color: Colors.white.withOpacity(controller.value)),
                   ),
                 ),
               ),
@@ -79,7 +89,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
-                color: Colors.blueAccent,
+                color: Color(0xFF8e005f).withOpacity(controller.value),
                 borderRadius: BorderRadius.circular(30.0),
                 elevation: 5.0,
                 child: MaterialButton(
@@ -90,6 +100,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                   height: 42.0,
                   child: Text(
                     'Register',
+                    style: TextStyle(
+                        color: Colors.white.withOpacity(controller.value)),
                   ),
                 ),
               ),
