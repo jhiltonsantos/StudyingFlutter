@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "404096944016",
+    "firebase_url": "https://chatappflash.firebaseio.com",
+    "project_id": "chatappflash",
+    "storage_bucket": "chatappflash.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404096944016:android:c48bf3b81586ff24cd1515",
+        "android_client_info": {
+          "package_name": "com.jhiltonsantos.chat_flash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404096944016-7049gknb76lu46hsk60hi0mu2iucsbgt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCks8sGCvevSPwvpNmcVWGd4NvzI9ERI7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404096944016-7049gknb76lu46hsk60hi0mu2iucsbgt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
