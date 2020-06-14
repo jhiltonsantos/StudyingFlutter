@@ -31,14 +31,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       setState(() {});
     });
 
-    animation = ColorTween(begin: Color(0xFF872A21), end: Color(0xFF482588))
+    animation = ColorTween(begin: Color(0xFF882588), end: Color(0xFF482588))
         .animate(controller);
-
-    animationButtonLogin = ColorTween(begin: Color(0xFF872A21), end: Color(0xFF482588))
-        .animate(controller);
-
-
-
     animation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         controller.reverse(from: 1.0);
