@@ -13,6 +13,9 @@ FirebaseUser loggedInUser;
 
 class ChatScreen extends StatefulWidget {
   static const String id = 'chat_screen';
+  final String emailLogin;
+
+  const ChatScreen({this.emailLogin});
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -22,6 +25,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final messageTextController = TextEditingController();
   final _auth = FirebaseAuth.instance;
   String messageText;
+
   List<Color> gradient = [Color(0xFF482588), Color(0xFF882588)];
 
   void getCurrentUser() async {
@@ -91,13 +95,14 @@ class _ChatScreenState extends State<ChatScreen> {
                       width: 55.0,
                       onPressed: () {
                         messageTextController.clear();
-                        if (messageText != null) {
-                          _fireStore.collection('messages').add({
-                            'text': messageText,
-                            'sender': loggedInUser.email
-                          });
-                        }
-                        messageText = null;
+//                        if (messageText != null) {
+                        _fireStore.collection('messages').add({
+                          'text': messageText,
+                          'sender': loggedInUser.email,
+                          'date': DateTime.now().toIso8601String().toString(),
+                        });
+//                        }
+//                        messageText = null;
                       },
                     ),
                   ),
@@ -115,14 +120,12 @@ class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _fireStore.collection('messages').snapshots(),
+      stream: _fireStore.collection('messages').orderBy('date').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Expanded(
             child: Center(
-              child: CircularProgressIndicator(
-                backgroundColor: Color(0xFF882588),
-              ),
+              child: CircularProgressIndicator(),
             ),
           );
         }
@@ -132,6 +135,7 @@ class MessagesStream extends StatelessWidget {
         for (var msg in messages) {
           final messageText = msg.data['text'];
           final messageSender = msg.data['sender'];
+          final messageDate = msg.data['date'];
 
           final currentUser = loggedInUser.email;
 
@@ -139,7 +143,6 @@ class MessagesStream extends StatelessWidget {
               text: messageText,
               sender: messageSender,
               isMeUser: currentUser == messageSender);
-
           messageList.add(messageBubble);
         }
         return Expanded(
@@ -167,7 +170,6 @@ class MessageBubble extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 10.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: isMeUser
             ? CrossAxisAlignment.end
             : CrossAxisAlignment.start,
@@ -178,9 +180,12 @@ class MessageBubble extends StatelessWidget {
               style: TextStyle(fontSize: 12.0, color: Colors.white),),),
           Material(
             elevation: 10.0,
-            borderRadius: isMeUser ? BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                bottomLeft: Radius.circular(30.0), bottomRight: Radius.circular(30.0)) : BorderRadius.only(
+            borderRadius: isMeUser
+                ? BorderRadius.only(
+                    topLeft: Radius.circular(30.0),
+                bottomLeft: Radius.circular(30.0),
+                bottomRight: Radius.circular(30.0))
+                : BorderRadius.only(
                 topRight: Radius.circular(30.0),
                 bottomLeft: Radius.circular(30.0),
                 bottomRight: Radius.circular(30.0)),
@@ -198,4 +203,3 @@ class MessageBubble extends StatelessWidget {
     );
   }
 }
-

@@ -78,7 +78,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (email != null && password != null) {
                       await _auth.signInWithEmailAndPassword(
                           email: email, password: password);
-                      Navigator.pushNamed(context, ChatScreen.id);
+                      Route routeChat = MaterialPageRoute(
+                          builder: (context) => ChatScreen(
+                                emailLogin: email,
+                              ));
+                      Navigator.push(context, routeChat);
                       EdgeAlert.show(context,
                           title: 'Login',
                           description: 'Log In $email',

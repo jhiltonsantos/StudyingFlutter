@@ -75,12 +75,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     if (email != null && password != null) {
                       await _auth.createUserWithEmailAndPassword(
                           email: email, password: password);
-//                      StatusAlert.show(
-//                        context,
-//                        duration: Duration(seconds: 1),
-//                        title: 'Registered',
-//                        configuration: IconConfiguration(icon: Icons.done),
-//                      );
                       EdgeAlert.show(context,
                           title: 'Registered',
                           description: 'You Now Have Login Access',
