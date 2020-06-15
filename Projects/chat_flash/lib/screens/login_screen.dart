@@ -32,13 +32,15 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Hero(
-                tag: 'logo',
-                child: Container(
-                  height: 120.0,
-                  child: Image.asset(
-                    'images/iconsLogo.png',
-                    scale: 0.8,
+              Flexible(
+                child: Hero(
+                  tag: 'logo',
+                  child: Container(
+                    height: 150.0,
+                    child: Image.asset(
+                      'images/iconsLogo.png',
+                      scale: 0.8,
+                    ),
                   ),
                 ),
               ),
@@ -79,9 +81,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.pushNamed(context, ChatScreen.id);
                       EdgeAlert.show(context,
                           title: 'Login',
-                          description: 'Login Made By $email',
+                          description: 'Log In $email',
                           gravity: EdgeAlert.TOP,
-                          duration: 2,
+                          duration: 1,
                           backgroundColor: Color(0xFF882588),
                           icon: Icons.done);
                     }
