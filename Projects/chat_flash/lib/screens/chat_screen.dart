@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:nice_button/nice_button.dart';
 
 import '../constants.dart';
 
@@ -12,8 +15,11 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  final _fireStore = Firestore.instance;
   final _auth = FirebaseAuth.instance;
   FirebaseUser loggedInUser;
+  String messageText;
+  List<Color> gradient = [Color(0xFF882588), Color(0xFF482588)];
 
   void getCurrentUser() async {
     try {
@@ -36,7 +42,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: GradientAppBar(
         leading: null,
         actions: <Widget>[
           IconButton(
@@ -47,8 +53,8 @@ class _ChatScreenState extends State<ChatScreen> {
             },
           ),
         ],
-        title: Text('⚡️Chat'),
-        backgroundColor: Colors.lightBlueAccent,
+        title: Icon(Icons.chat_bubble),
+        gradient: LinearGradient(colors: gradient),
       ),
       body: SafeArea(
         child: Column(
@@ -63,18 +69,29 @@ class _ChatScreenState extends State<ChatScreen> {
                   Expanded(
                     child: TextField(
                       onChanged: (value) {
-                        //Do something with the user input.
+                        messageText = value;
                       },
                       decoration: kMessageTextFieldDecoration,
                     ),
                   ),
-                  FlatButton(
-                    onPressed: () {
-                      //Implement send functionality.
-                    },
-                    child: Text(
-                      'Send',
-                      style: kSendButtonTextStyle,
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 3.0, vertical: 10.0),
+                    child: NiceButton(
+                      mini: true,
+                      text: '',
+                      icon: Icons.send,
+                      elevation: 15.0,
+                      //gradientColors: [Color(0xFF882588), Color(0xFF482588)],
+                      background: Color(0xFF882588),
+                      radius: 60,
+                      width: 60.0,
+                      onPressed: () {
+                        _fireStore.collection('messages').add({
+                          'text': messageText,
+                          'sender': loggedInUser.email
+                        });
+                      },
                     ),
                   ),
                 ],

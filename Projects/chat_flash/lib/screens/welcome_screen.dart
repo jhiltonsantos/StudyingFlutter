@@ -80,40 +80,49 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Hero(
-                  flightShuttleBuilder: (
-                    BuildContext flightContext,
-                    Animation<double> animationIcon,
-                    HeroFlightDirection flightDirection,
-                    BuildContext fromHeroContext,
-                    BuildContext toHeroContext,
-                  ) {
-                    final Hero toHero = toHeroContext.widget;
-                    return RotationTransition(
-                      turns: animationIcon,
-                      child: toHero.child,
-                    );
-                  },
-                  tag: 'logo',
-                  child: Container(
-                    child: Image(
-                      image: AssetImage('images/logo.png'),
-                      filterQuality: FilterQuality.low,
-                      colorBlendMode: BlendMode.saturation,
+                Material(
+                  type: MaterialType.circle,
+                  elevation: 10.0,
+                  color: Colors.transparent,
+                  shadowColor: Colors.black38,
+                  child: Hero(
+                    flightShuttleBuilder: (
+                      BuildContext flightContext,
+                      Animation<double> animationIcon,
+                      HeroFlightDirection flightDirection,
+                      BuildContext fromHeroContext,
+                      BuildContext toHeroContext,
+                    ) {
+                      final Hero toHero = toHeroContext.widget;
+                      return RotationTransition(
+                        turns: animationIcon,
+                        child: toHero.child,
+                      );
+                    },
+                    tag: 'logo',
+                    child: Container(
+                      child: Image(
+                        image: AssetImage('images/iconsLogo.png'),
+                        filterQuality: FilterQuality.low,
+                        colorBlendMode: BlendMode.saturation,
+
+                      ),
+                      height: 70,
                     ),
-                    height: 70,
                   ),
                 ),
                 Center(
                   child: TypewriterAnimatedTextKit(
                     text: ['Chat App'],
                     repeatForever: true,
-                    speed: Duration(milliseconds: 400),
+                    speed: Duration(milliseconds: 350),
                     textStyle: TextStyle(
                       color: Color(0xFFd3e9a9),
                       fontSize: 45.0,
                       fontWeight: FontWeight.w900,
+
                     ),
                     textAlign: TextAlign.center,
                     alignment: AlignmentDirectional.topStart,
@@ -144,4 +153,3 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 }
-
