@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/bitcoin_challenge/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bitcoin_challenge/build" />
+      <excludeFolder url="file://$MODULE_DIR$/calc_imc/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/calc_imc/build" />
+      <excludeFolder url="file://$MODULE_DIR$/chat_flash/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/chat_flash/build" />
+      <excludeFolder url="file://$MODULE_DIR$/clima_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/clima_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/destini_challenge/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/destini_challenge/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dicee/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dicee/build" />
+      <excludeFolder url="file://$MODULE_DIR$/finance_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/finance_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_doc/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_doc/build" />
+      <excludeFolder url="file://$MODULE_DIR$/gifhy_developers/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/gifhy_developers/build" />
+      <excludeFolder url="file://$MODULE_DIR$/i_am_poor_challenge/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/i_am_poor_challenge/build" />
+      <excludeFolder url="file://$MODULE_DIR$/i_am_rich/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/i_am_rich/build" />
+      <excludeFolder url="file://$MODULE_DIR$/imcalculator/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/imcalculator/build" />
+      <excludeFolder url="file://$MODULE_DIR$/layout_challenge/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/layout_challenge/build" />
+      <excludeFolder url="file://$MODULE_DIR$/magic8ball/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/magic8ball/build" />
+      <excludeFolder url="file://$MODULE_DIR$/my_card_develop/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/my_card_develop/build" />
+      <excludeFolder url="file://$MODULE_DIR$/people_counter/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/people_counter/build" />
+      <excludeFolder url="file://$MODULE_DIR$/quizzler_flutter/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/quizzler_flutter/build" />
+      <excludeFolder url="file://$MODULE_DIR$/task_listing/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/task_listing/build" />
+      <excludeFolder url="file://$MODULE_DIR$/xylophone_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/xylophone_app/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
+  </component>
+</module>

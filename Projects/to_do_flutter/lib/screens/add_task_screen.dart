@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todoflutter/constants.dart';
+import 'package:todoflutter/controller/list_tasks.dart';
+
 
 class AddTaskScreen extends StatelessWidget {
+
+  String taskAdd;
+  final addToDoController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,12 +34,14 @@ class AddTaskScreen extends StatelessWidget {
             Padding(
                 padding: EdgeInsets.symmetric(horizontal: 80.0),
                 child: TextField(
+                  controller: addToDoController,
                   autofocus: true,
                   textAlign: TextAlign.center,
                   cursorColor: colorPrimary,
-                  decoration: InputDecoration(
-                    fillColor: colorPrimary
-                  ),
+                  decoration: InputDecoration(fillColor: colorPrimary),
+                  onChanged: (value) {
+                    taskAdd = value;
+                  },
                 )),
             SizedBox(
               height: 15.0,
@@ -45,7 +54,12 @@ class AddTaskScreen extends StatelessWidget {
                   'Adicionar',
                   style: TextStyle(color: Colors.black),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  if (taskAdd != null) {
+                    Provider.of<ListTasks>(context, listen: false).taskAdd(taskAdd);
+                  }
+                  Navigator.pop(context);
+                },
               ),
             ),
           ],
@@ -54,3 +68,6 @@ class AddTaskScreen extends StatelessWidget {
     );
   }
 }
+
+
+
