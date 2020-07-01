@@ -8,11 +8,27 @@ import '../models/task.dart';
 
 final _fireStore = Firestore.instance;
 
-class ListTasks extends ChangeNotifier {
+class ListTasks extends ChangeNotifier{
   List<Task> tasks = [];
 
-  int get taskLength => tasks.length;
+//  void integration (){
+//    StreamBuilder<QuerySnapshot> (
+//      stream: _fireStore.collection('todoList').snapshots(),
+//      builder: (context, snapshot) {
+//        final todo = snapshot.data.documents;
+//
+//        for (var td in todo) {
+//          final todoText = td.data['todo_text'];
+//          tasks.add(todoText);
+//        }
+//
+//        return null;
+//      },
+//    );
+//  }
 
+
+  int get taskLength => tasks.length;
 
   void taskAdd(String newTaskTitle) {
     final task = Task(title: newTaskTitle);

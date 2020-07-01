@@ -9,8 +9,6 @@ import 'package:todoflutter/controller/list_tasks.dart';
 import 'package:todoflutter/screens/add_task_screen.dart';
 import 'package:todoflutter/widgets/task_list.dart';
 
-import '../main.dart';
-
 final _fireStone = Firestore.instance;
 
 class TaskScreen extends StatelessWidget {
@@ -65,7 +63,7 @@ class TaskScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                '${Provider.of<ListTasks>(context).taskLength} Tarefas',
+                  '${Provider.of<ListTasks>(context).taskLength} Tarefas',
                   style: TextStyle(color: colorPrimary, fontSize: 18.0),
                 ),
               ],
@@ -89,7 +87,6 @@ class TaskScreen extends StatelessWidget {
     );
   }
 }
-
 
 class ListToDoStream extends StatelessWidget {
   @override
